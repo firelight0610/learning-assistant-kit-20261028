@@ -14,15 +14,18 @@
     "public_access_without_login": true,
     "persistent_task_survives_production_redeploy": true,
     "persistence_marker_id": 10,
-    "persistence_test_task_removed": true
+    "persistence_test_task_removed": true,
+    "github_repository_connected": true,
+    "push_to_main_deploys_automatically": true
   },
   "netlify_deploys": [
     { "id": "6ad73647243e82fc7ddb650b", "state": "ready", "database_migration_applied": true },
-    { "id": "6ad7371b09d7dd6dfb518e0a", "state": "ready", "database_migration_reapplied": false }
+    { "id": "6ad7371b09d7dd6dfb518e0a", "state": "ready", "database_migration_reapplied": false },
+    { "id": "6ad7406a8e55866f431abc9d", "state": "ready", "branch": "main", "commit": "327b8bc99c3975c5c31df3237ab86ea459f93aee", "trigger": "push to connected GitHub repository", "published_at": "2026-10-20T10:20:44.734Z", "database_migration_reapplied": false }
   ],
   "github_runs": {
     "project_checks": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39401924337",
     "mail_preview_only": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39402096233"
   },
-  "pending": ["Netlify GitHub repository authorization and automatic-deploy verification", "QQ SMTP secrets and actual manual delivery", "actual scheduled email delivery", "physical board model details and vendor example", "STM32 flash and display integration", "real 25-minute hardware run", "learner Git exercises"]
+  "pending": ["QQ SMTP secrets and actual manual delivery", "actual scheduled email delivery", "physical board model details and vendor example", "STM32 flash and display integration", "real 25-minute hardware run", "learner Git exercises"]
 }
