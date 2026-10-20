@@ -9,7 +9,8 @@
     "manual_mail_delivery": { "workflow_success": true, "user_confirmed_received": true, "confirmed_on": "2026-10-20", "run_url": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39428110511", "receipt_screenshot_saved": false },
     "timer_host_tests": { "passed": true, "scenarios": ["start", "pause_resume", "reset", "expiry", "debounce", "long_press", "uptime_rollover", "simulated_25_minutes"] },
     "timer_cortex_m3_object_compilation": true,
-    "stlink_usb_driver": { "usb_vid": "0483", "usb_pid": "3748", "status_before": "Error", "error_code_before": 28, "status_after": "OK", "error_code_after": 0, "driver_version": "2.2.0.0", "provider": "STMicroelectronics", "package_inf": "stlink_dbg_winusb.inf", "driver_catalog_signature": "Valid", "installer_exit_code": 0, "source": "https://www.st.com.cn/resource/en/driver/stsw-link009.zip", "archive_sha256": "DF015C7760F974E9DA0F4C5A098D62C72157EA45CD0E80694EB47AB7EF28352B", "target_board_connection_verified": false },
+    "stlink_usb_driver": { "usb_vid": "0483", "usb_pid": "3748", "status_before": "Error", "error_code_before": 28, "status_after": "OK", "error_code_after": 0, "driver_version": "2.2.0.0", "provider": "STMicroelectronics", "package_inf": "stlink_dbg_winusb.inf", "driver_catalog_signature": "Valid", "installer_exit_code": 0, "source": "https://www.st.com.cn/resource/en/driver/stsw-link009.zip", "archive_sha256": "DF015C7760F974E9DA0F4C5A098D62C72157EA45CD0E80694EB47AB7EF28352B", "target_board_connection_verified": true },
+    "stm32_swd_read": {"passed": true, "processor": "Cortex-M3 r1p1", "swd_dpidr": "0x1ba01477", "cpuid": "0x411fc231", "dbgmcu_idcode": "0x00006410", "flash_size_kb": 64, "target_voltage_v": 3.255764, "adapter_speed_khz": 100, "user_confirmed_power_led": true, "flash_written": false, "log": "evidence/stlink-read-chip.log"},
     "public_browser_crud": true,
     "mobile_widths_without_overflow": [375, 390, 768],
     "browser_script_errors": 0,
@@ -30,5 +31,5 @@
     "mail_preview_only": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39402096233",
     "manual_mail_delivery": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39428110511"
   },
-  "pending": ["actual scheduled email delivery", "manual mail receipt screenshot", "physical board model details and vendor example", "STM32 flash and display integration", "real 25-minute hardware run", "learner Git exercises"]
+  "pending": ["actual scheduled email delivery", "manual mail receipt screenshot", "confirm physical display interface and board LED mapping", "STM32 flash and display integration", "real 25-minute hardware run", "learner Git exercises"]
 }
