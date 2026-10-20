@@ -1,5 +1,5 @@
 {
-  "project_url": "",
+  "project_url": "https://xingzhi-study-kit-1028.netlify.app",
   "days": {
     "2026-10-20": ["保存第一个 Git 版本", "验证 Netlify 页面、后端及数据库", "核对 STM32 配件与配套例程"],
     "2026-10-21": ["成功烧录 LED 与屏幕例程", "练习 .gitignore、diff、log 和首次 push"],

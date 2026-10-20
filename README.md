@@ -4,6 +4,8 @@
 
 **先阅读 [开始这里](docs/开始这里.md)。** 每天 2～3 小时，采用“讲一点 → 你操作 → 检查结果”的方式。
 
+**网页：<https://xingzhi-study-kit-1028.netlify.app>** · [GitHub 自动检查](https://github.com/firelight0610/learning-assistant-kit-20261028/actions)
+
 ## 三个作品
 
 | 作品 | 实现 | 当前边界 |
