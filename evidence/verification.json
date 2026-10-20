@@ -9,6 +9,7 @@
     "manual_mail_delivery": { "workflow_success": true, "user_confirmed_received": true, "confirmed_on": "2026-10-20", "run_url": "https://github.com/firelight0610/learning-assistant-kit-20261028/actions/runs/39428110511", "receipt_screenshot_saved": false },
     "timer_host_tests": { "passed": true, "scenarios": ["start", "pause_resume", "reset", "expiry", "debounce", "long_press", "uptime_rollover", "simulated_25_minutes"] },
     "timer_cortex_m3_object_compilation": true,
+    "stlink_usb_driver": { "usb_vid": "0483", "usb_pid": "3748", "status_before": "Error", "error_code_before": 28, "status_after": "OK", "error_code_after": 0, "driver_version": "2.2.0.0", "provider": "STMicroelectronics", "package_inf": "stlink_dbg_winusb.inf", "driver_catalog_signature": "Valid", "installer_exit_code": 0, "source": "https://www.st.com.cn/resource/en/driver/stsw-link009.zip", "archive_sha256": "DF015C7760F974E9DA0F4C5A098D62C72157EA45CD0E80694EB47AB7EF28352B", "target_board_connection_verified": false },
     "public_browser_crud": true,
     "mobile_widths_without_overflow": [375, 390, 768],
     "browser_script_errors": 0,
