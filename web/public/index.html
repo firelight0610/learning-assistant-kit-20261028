@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="把学习计划变成一次次完成。管理任务、关注截止日期，记录每天的小进步。">
+  <meta name="theme-color" content="#174c42">
+  <title>行知 · 学习任务看板</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#board">跳到任务列表</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="行知，返回顶部"><span class="brand-icon" aria-hidden="true">知</span><span>行知<small>STUDY KIT</small></span></a>
+      <p class="nav-caption">我的工作台</p>
+      <nav>
+        <a class="nav-link active" href="#board"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>学习任务</a>
+        <a class="nav-link" href="#roadmap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v4m10-4v4M4 10h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg>交付路线</a>
+        <a class="nav-link" href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14"/></svg>关于项目</a>
+      </nav>
+      <div class="sidebar-note"><span class="small-label">ONE STEP AT A TIME</span><p>每天推进一点，<br>让想法真正落地。</p><div class="note-line"></div><span>网页 · 邮件 · STM32</span></div>
+      <div class="sidebar-bottom"><span class="avatar">学</span><div>我的学习空间<small>从动手开始</small></div></div>
+    </aside>
+
+    <main id="top">
+      <header class="topbar"><span>我的工作台 <span class="breadcrumb-separator">/</span> <strong>学习任务</strong></span><span class="sync-state" id="sync-state" role="status">正在连接…</span></header>
+      <div class="page-content">
+        <section class="heading-row" aria-labelledby="page-title"><div><p class="eyebrow" id="today-label">今天，也向前一步</p><h1 id="page-title">把计划，变成完成。</h1><p class="intro">专注眼前的一件事，记录每一次小进步。</p></div><button class="button primary" id="add-task"><span aria-hidden="true">＋</span> 新建任务</button></section>
+
+        <section class="overview" aria-label="任务概览">
+          <article class="stat-card"><span class="stat-label">全部任务</span><div class="stat-value" id="total-count">—</div><span class="stat-hint">想法落地的起点</span></article>
+          <article class="stat-card"><span class="stat-label">待完成</span><div class="stat-value" id="pending-count">—</div><span class="stat-hint">一次专注，一步向前</span></article>
+          <article class="stat-card"><span class="stat-label">已完成</span><div class="stat-value green" id="done-count">—</div><span class="stat-hint">每一项都值得记录</span></article>
+          <article class="stat-card progress-card"><div class="progress-heading"><span class="stat-label">完成进度</span><strong id="progress-label">—</strong></div><progress id="task-progress" value="0" max="100" aria-label="任务完成进度"></progress><span class="stat-hint" id="progress-hint">从第一个任务开始</span></article>
+        </section>
+
+        <div class="content-columns">
+          <section class="task-panel panel" id="board" aria-labelledby="tasks-title">
+            <div class="panel-heading"><div><h2 id="tasks-title">学习任务</h2><p>把大目标拆小，再逐个完成。</p></div><button class="icon-button" id="refresh-tasks" aria-label="刷新任务列表" title="刷新任务列表"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/></svg></button></div>
+            <div class="filter-bar" role="group" aria-label="按完成状态筛选"><button class="filter active" data-filter="all" aria-pressed="true">全部 <span id="filter-total">0</span></button><button class="filter" data-filter="pending" aria-pressed="false">待完成</button><button class="filter" data-filter="done" aria-pressed="false">已完成</button></div>
+            <div class="error-banner" id="api-error" role="alert" hidden></div>
+            <p class="list-message" id="list-message" role="status">正在加载学习任务…</p>
+            <ul class="task-list" id="task-list" aria-label="任务列表"></ul>
+            <div class="panel-footer"><span>勾选任务，记录你的进步</span><span id="visible-count">等待加载</span></div>
+          </section>
+
+          <aside class="right-column" aria-label="目标与路线">
+            <section class="deadline-card"><div class="deadline-top"><span class="small-label">下一站 · 项目交付</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 1c5-5 9 5 14 0v10c-5 5-9-5-14 0"/></svg></div><div class="deadline-number"><span id="days-left">8</span><span id="days-unit">天</span></div><h2 id="deadline-title">留一点时间，给最后的检查。</h2><p>2026 年 10 月 28 日交付<br>27 日验收、整理照片和网址。</p><div class="deadline-bottom"><span>三个小作品，一次完整实践</span><span aria-hidden="true">↗</span></div></section>
+            <section class="roadmap panel" id="roadmap" aria-labelledby="roadmap-title"><div class="roadmap-heading"><span class="small-label">BUILD · LEARN · SHIP</span><h2 id="roadmap-title">交付路线</h2></div><ol><li><span class="step-number">01</span><div><h3>学习任务网页</h3><p>管理任务，保存每次进度</p><span>10.23 前完成</span></div></li><li><span class="step-number">02</span><div><h3>每日计划邮件</h3><p>让学习提醒自动送达</p><span>10.24 前完成</span></div></li><li><span class="step-number">03</span><div><h3>STM32 专注计时器</h3><p>用一次倒计时，开始专注</p><span>10.25 前完成</span></div></li></ol><p class="roadmap-note">每推进一步，也保存一个 Git 版本。</p></section>
+          </aside>
+        </div>
+
+        <section class="about-panel" id="about" aria-labelledby="about-title"><div><span class="small-label">ABOUT THIS PROJECT</span><h2 id="about-title">在实践中，学会创造。</h2></div><p>这是学习助手三件套中的任务网页。任务通过后端保存在数据库中，刷新后仍然保留。当前为共享演示空间，请使用示例任务。</p></section>
+        <footer class="page-footer"><span>行知 STUDY KIT</span><span>小步前进，认真完成。</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="task-dialog" aria-labelledby="dialog-title"><form id="task-form"><div class="dialog-heading"><h2 id="dialog-title">新建学习任务</h2><button type="button" class="icon-button" id="close-dialog" aria-label="关闭新建任务窗口">×</button></div><p class="dialog-intro">下一步，你准备完成什么？</p><label for="task-title">任务名称</label><input id="task-title" name="title" required maxlength="120" placeholder="例如：亲手完成一次 Git 提交" autocomplete="off"><label for="task-date">截止日期 <span class="optional">选填</span></label><input id="task-date" name="due_date" type="date"><p class="form-error" id="form-error" role="alert" hidden></p><div class="dialog-actions"><button type="button" class="button secondary" id="cancel-dialog">取消</button><button type="submit" class="button primary" id="save-task">保存任务</button></div></form></dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-title"><h2 id="delete-title">删除这条任务？</h2><p id="delete-task-name"></p><p class="dialog-intro">删除后无法恢复。</p><div class="dialog-actions"><button class="button secondary" id="cancel-delete">保留任务</button><button class="button danger" id="confirm-delete">确认删除</button></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <template id="task-template"><li class="task-row"><label class="check-control"><input type="checkbox"><span class="custom-check" aria-hidden="true"></span><span class="sr-only"></span></label><div class="task-content"><span class="task-title"></span><div class="task-meta"><span class="task-date"></span><span class="task-state"></span></div></div><button class="icon-button delete-task" title="删除任务"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6m4-6v6"/></svg></button></li></template>
+</body>
+</html>

@@ -1,0 +1,41 @@
+name: Daily study mail
+
+on:
+  schedule:
+    # 00:17 UTC = 08:17 Asia/Shanghai. Schedules can be delayed by GitHub.
+    - cron: '17 0 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '只预览，不发送邮件'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-study-mail
+  cancel-in-progress: false
+
+jobs:
+  send:
+    # Add the repository variable ENABLE_DAILY_MAIL=true after a manual send succeeds.
+    if: github.event_name == 'workflow_dispatch' || vars.ENABLE_DAILY_MAIL == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Preview study plan
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: python mail/send_plan.py --dry-run
+      - name: Send QQ mail
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        env:
+          QQ_SMTP_USER: ${{ secrets.QQ_SMTP_USER }}
+          QQ_SMTP_AUTH_CODE: ${{ secrets.QQ_SMTP_AUTH_CODE }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+        run: python mail/send_plan.py --send
