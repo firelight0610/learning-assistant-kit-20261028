@@ -1,0 +1,42 @@
+{
+  "updated_on": "2026-10-20",
+  "changes": [
+    {
+      "action": "completed",
+      "id": 3,
+      "title": "完成网页任务管理功能"
+    },
+    {
+      "action": "completed",
+      "id": 4,
+      "title": "验证 Netlify 公网访问与数据保存"
+    },
+    {
+      "action": "completed",
+      "id": 5,
+      "title": "收到 GitHub Actions 发来的第一封邮件"
+    },
+    {
+      "action": "created",
+      "id": 11,
+      "title": "保存邮件收件和 Actions 成功截图"
+    },
+    {
+      "action": "created",
+      "id": 12,
+      "title": "核对开发板、下载器和屏幕型号并取得配套例程"
+    },
+    {
+      "action": "created",
+      "id": 13,
+      "title": "验证 08:17 定时邮件实际送达"
+    },
+    {
+      "action": "created",
+      "id": 14,
+      "title": "完成 STM32 首次烧录和 LED 点亮"
+    }
+  ],
+  "total": 12,
+  "completed": 3
+}

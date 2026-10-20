@@ -6,6 +6,8 @@
 
 **网页：<https://xingzhi-study-kit-1028.netlify.app>** · [GitHub 自动检查](https://github.com/firelight0610/learning-assistant-kit-20261028/actions)
 
+网页与手动收件已完成，当前从[下一轮行动：45 分钟 Git 与硬件准备](docs/下一轮行动.md)继续。
+
 ## 三个作品
 
 | 作品 | 实现 | 当前边界 |
