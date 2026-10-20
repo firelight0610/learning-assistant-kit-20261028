@@ -61,3 +61,10 @@ class MailTests(TestCase):
         with mock.patch("pathlib.Path.open", mock.mock_open(read_data=json.dumps(plan))):
             with self.assertRaises(ValueError):
                 study_mail.load_plan("plan.json")
+
+    def test_main_reports_smtp_failure_without_exposing_exception(self):
+        output = io.StringIO()
+        with mock.patch.object(study_mail, "send_message", side_effect=study_mail.smtplib.SMTPException("SECRET")), redirect_stderr(output):
+            self.assertEqual(study_mail.main(["--send", "--date", "2026-10-24"]), 1)
+        self.assertIn("邮件发送失败", output.getvalue())
+        self.assertNotIn("SECRET", output.getvalue())

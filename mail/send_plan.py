@@ -94,15 +94,15 @@ def main(argv=None):
             print(subject + "\n\n" + body)
             print("\n[仅预览：未发送邮件]", file=sys.stderr)
         return 0
+    except smtplib.SMTPException:
+        print("邮件发送失败，请检查 QQ 邮箱 SMTP 服务、授权码与收件人设置。", file=sys.stderr)
+        return 1
     except (ValueError, OSError) as error:
         # Configuration messages contain field names, never credential values.
         if isinstance(error, ValueError) and not isinstance(error, json.JSONDecodeError):
             print(f"配置错误：{error}", file=sys.stderr)
         else:
-            print("无法读取计划文件，请检查文件路径与 JSON 格式。", file=sys.stderr)
-        return 1
-    except smtplib.SMTPException:
-        print("邮件发送失败，请检查 QQ 邮箱 SMTP 服务、授权码与收件人设置。", file=sys.stderr)
+            print("操作失败，请检查计划文件路径、JSON 格式以及发信时的网络连接。", file=sys.stderr)
         return 1
 
 
